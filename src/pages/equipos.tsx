@@ -72,7 +72,7 @@ export const EquipmentPage = () => {
     return (
       <div className="p-4">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-bold text-[#212121]">Equipos</h2>
+          <h2 className="text-lg font-bold text-[#E0E0E0]">Equipos</h2>
           {canManage && (
             <Button onClick={() => navigate('/dashboard/equipos/nuevo')} variant="primary" className="h-10 text-sm px-4">+ Nuevo</Button>
           )}
@@ -95,7 +95,7 @@ export const EquipmentPage = () => {
   return (
     <div className="p-4">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-bold text-[#212121]">Equipos</h2>
+        <h2 className="text-lg font-bold text-[#E0E0E0]">Equipos</h2>
         {canManage && (
           <Button onClick={() => navigate('/dashboard/equipos/nuevo')} variant="primary" className="h-10 text-sm px-4">+ Nuevo</Button>
         )}
@@ -105,6 +105,7 @@ export const EquipmentPage = () => {
         label="Buscar por código o nombre"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
+        className="text-[#00F2FF]"
       />
 
       <div className="flex gap-2 overflow-x-auto pb-2 mb-4">
@@ -114,8 +115,8 @@ export const EquipmentPage = () => {
             onClick={() => setFilter(f.value)}
             className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${
               filter === f.value
-                ? 'bg-[#1565C0] border-[#1565C0] text-white'
-                : 'border-[#E0E0E0] text-[#616161] bg-white hover:bg-[#F5F5F5]'
+                ? 'bg-[#1565C0]/20 border-[#1565C0] text-[#00F2FF]'
+                : 'border-white/10 text-[#90CAF9] bg-black/40 hover:bg-white/5'
             }`}
           >
             {f.label}
@@ -128,8 +129,8 @@ export const EquipmentPage = () => {
           <Card key={e.id} padding="md">
             <div className="flex items-center justify-between">
               <div>
-                <div className="font-semibold text-[#212121]">{e.codigoPatrimonial}</div>
-                <div className="text-sm text-[#616161]">{e.nombre}</div>
+                <div className="font-semibold text-[#E0E0E0]">{e.codigoPatrimonial}</div>
+                <div className="text-sm text-[#90CAF9]">{e.nombre}</div>
               </div>
               <div className="flex items-center gap-2">
                 <Badge variant="default" className={`text-[10px] border-[${estadoColor(e.estado)}] text-[${estadoColor(e.estado)}]`}>
@@ -175,7 +176,7 @@ export const EquipoDetailPage = () => {
   return (
     <div className="p-4">
       <header className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-bold text-[#212121]">{equipo.codigoPatrimonial}</h2>
+        <h2 className="text-lg font-bold text-[#E0E0E0]">{equipo.codigoPatrimonial}</h2>
         {canManage && (
           <Button onClick={() => navigate(`/dashboard/equipos/${id}/editar`)} variant="outline" className="h-10 text-sm px-4">
             Editar
@@ -186,14 +187,14 @@ export const EquipoDetailPage = () => {
       <Card className="mb-6">
         <div className="flex items-center justify-between">
           <div>
-            <div className="text-lg font-bold text-[#212121]">{equipo.codigoPatrimonial}</div>
-            <div className="text-sm text-[#616161]">{equipo.nombre}</div>
+            <div className="text-lg font-bold text-[#E0E0E0]">{equipo.codigoPatrimonial}</div>
+            <div className="text-sm text-[#90CAF9]">{equipo.nombre}</div>
           </div>
           <div className={`px-3 py-1 rounded text-[10px] font-medium ${
-            equipo.estado === 'disponible' ? 'bg-[#E8F5E9] text-[#2E7D32]' :
-            equipo.estado === 'prestado' ? 'bg-[#E3F2FD] text-[#1565C0]' :
-            equipo.estado === 'mantenimiento' ? 'bg-[#FFF3E0] text-[#E65100]' :
-            'bg-[#F5F5F5] text-[#616161]'
+            equipo.estado === 'disponible' ? 'bg-[#2E7D32]/20 text-[#81C784] border-[#81C784]/30' :
+            equipo.estado === 'prestado' ? 'bg-[#1565C0]/20 text-[#64B5F6] border-[#64B5F6]/30' :
+            equipo.estado === 'mantenimiento' ? 'bg-[#E65100]/20 text-[#FFB74D] border-[#FFB74D]/30' :
+            'bg-white/5 text-[#90CAF9] border-white/10'
           }`}>
             {equipo.estado}
           </div>
@@ -201,28 +202,28 @@ export const EquipoDetailPage = () => {
       </Card>
 
       <Card>
-        <div className="text-sm font-bold text-[#212121] mb-3">Información del equipo</div>
+        <div className="text-sm font-bold text-[#E0E0E0] mb-3">Información del equipo</div>
         <div className="space-y-2 text-sm">
-          <div className="flex justify-between border-b border-[#E0E0E0] pb-2">
-            <span className="text-[#616161]">Tipo</span>
-            <span className="text-[#212121]">{equipo.tipo}</span>
+          <div className="flex justify-between border-b border-white/10 pb-2">
+            <span className="text-[#90CAF9]">Tipo</span>
+            <span className="text-[#E0E0E0]">{equipo.tipo}</span>
           </div>
-          <div className="flex justify-between border-b border-[#E0E0E0] pb-2">
-            <span className="text-[#616161]">Marca</span>
-            <span className="text-[#212121]">{equipo.marca ?? '—'}</span>
+          <div className="flex justify-between border-b border-white/10 pb-2">
+            <span className="text-[#90CAF9]">Marca</span>
+            <span className="text-[#E0E0E0]">{equipo.marca ?? '—'}</span>
           </div>
-          <div className="flex justify-between border-b border-[#E0E0E0] pb-2">
-            <span className="text-[#616161]">Modelo</span>
-            <span className="text-[#212121]">{equipo.modelo ?? '—'}</span>
+          <div className="flex justify-between border-b border-white/10 pb-2">
+            <span className="text-[#90CAF9]">Modelo</span>
+            <span className="text-[#E0E0E0]">{equipo.modelo ?? '—'}</span>
           </div>
-          <div className="flex justify-between border-b border-[#E0E0E0] pb-2">
-            <span className="text-[#616161]">Número de serie</span>
-            <span className="text-[#212121]">{equipo.numeroSerie ?? '—'}</span>
+          <div className="flex justify-between border-b border-white/10 pb-2">
+            <span className="text-[#90CAF9]">Número de serie</span>
+            <span className="text-[#E0E0E0]">{equipo.numeroSerie ?? '—'}</span>
           </div>
           {equipo.observaciones && (
-            <div className="flex justify-between border-b border-[#E0E0E0] pb-2">
-              <span className="text-[#616161]">Observaciones</span>
-              <span className="text-[#212121]">{equipo.observaciones}</span>
+            <div className="flex justify-between border-b border-white/10 pb-2">
+              <span className="text-[#90CAF9]">Observaciones</span>
+              <span className="text-[#E0E0E0]">{equipo.observaciones}</span>
             </div>
           )}
         </div>
@@ -314,7 +315,7 @@ export const EquipoFormPage = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-lg font-bold text-[#212121] mb-4">Registrar Equipo</h2>
+      <h2 className="text-lg font-bold text-[#E0E0E0] mb-4">Registrar Equipo</h2>
       <Card>
         <form onSubmit={handleSave} className="space-y-4">
           <Input
@@ -322,12 +323,14 @@ export const EquipoFormPage = () => {
             value={formData.codigoPatrimonial}
             onChange={(e) => setFormData({ ...formData, codigoPatrimonial: e.target.value })}
             placeholder="Ej: EQ-001"
+            className="text-[#00F2FF]"
           />
           <Input
             label="Tipo"
             value={formData.tipo}
             onChange={(e) => setFormData({ ...formData, tipo: e.target.value })}
             placeholder="Selecciona un tipo"
+            className="text-[#00F2FF]"
           />
           {tipos.map((t) => (
             <button
@@ -336,8 +339,8 @@ export const EquipoFormPage = () => {
               onClick={() => setFormData({ ...formData, tipo: t.value })}
               className={`w-full px-4 py-2 rounded border text-sm text-left transition-colors ${
                 formData.tipo === t.value
-                  ? 'bg-[#1565C0] text-white border-[#1565C0]'
-                  : 'border-[#E0E0E0] text-[#616161] hover:bg-[#F5F5F5]'
+                  ? 'bg-[#1565C0]/20 border-[#1565C0] text-[#00F2FF]'
+                  : 'border-white/10 text-[#90CAF9] hover:bg-white/5'
               }`}
             >
               {t.label}
@@ -348,27 +351,31 @@ export const EquipoFormPage = () => {
             value={formData.marca}
             onChange={(e) => setFormData({ ...formData, marca: e.target.value })}
             placeholder="Dell, HP..."
+            className="text-[#00F2FF]"
           />
           <Input
             label="Modelo"
             value={formData.modelo}
             onChange={(e) => setFormData({ ...formData, modelo: e.target.value })}
             placeholder="Latitude 5430"
+            className="text-[#00F2FF]"
           />
           <Input
             label="Número de serie"
             value={formData.numeroSerie}
             onChange={(e) => setFormData({ ...formData, numeroSerie: e.target.value })}
             placeholder="SN123456"
+            className="text-[#00F2FF]"
           />
           <Input
             label="Observaciones"
             value={formData.observaciones}
             onChange={(e) => setFormData({ ...formData, observaciones: e.target.value })}
             placeholder="Observaciones del equipo"
+            className="text-[#00F2FF]"
           />
           {error && (
-            <div className="rounded border border-[#C62828] bg-[#FFEBEE] p-3 text-[#B71C1C] text-sm">
+            <div className="rounded border border-[#FF5252]/50 bg-[#FF5252]/10 p-3 text-[#FFBABA] text-sm shadow-[0_0_15px_rgba(255,82,82,0.3)]">
               {error}
             </div>
           )}

@@ -52,7 +52,7 @@ export const TeachersPage = () => {
     return (
       <div className="p-4">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-bold text-[#212121]">Docentes</h2>
+          <h2 className="text-lg font-bold text-[#E0E0E0]">Docentes</h2>
           {canManage && (
             <Button onClick={() => navigate('/dashboard/docentes/nuevo')} variant="primary" className="h-10 text-sm px-4">+ Nuevo</Button>
           )}
@@ -75,7 +75,7 @@ export const TeachersPage = () => {
   return (
     <div className="p-4">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-bold text-[#212121]">Docentes</h2>
+        <h2 className="text-lg font-bold text-[#E0E0E0]">Docentes</h2>
         {canManage && (
           <Button onClick={() => navigate('/dashboard/docentes/nuevo')} variant="primary" className="h-10 text-sm px-4">+ Nuevo</Button>
         )}
@@ -85,6 +85,7 @@ export const TeachersPage = () => {
         label="Buscar docente"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
+        className="text-[#00F2FF]"
       />
 
       <div className="flex items-center gap-4 mb-4">
@@ -93,7 +94,7 @@ export const TeachersPage = () => {
             type="checkbox"
             checked={soloActivos}
             onChange={(e) => setSoloActivos(e.target.checked)}
-            className="w-4 h-4 text-[#1565C0] rounded"
+            className="w-4 h-4 text-[#00F2FF] rounded"
           />
           Solo activos
         </label>
@@ -104,14 +105,14 @@ export const TeachersPage = () => {
           <Card key={d.id} padding="md">
             <div className="flex items-center justify-between">
               <div>
-                <div className="font-semibold text-[#212121]">{d.nombreCompleto}</div>
-                <div className="text-sm text-[#616161]">
+                <div className="font-semibold text-[#E0E0E0]">{d.nombreCompleto}</div>
+                <div className="text-sm text-[#90CAF9]">
                   {[d.grado, d.seccion, d.turno].filter(Boolean).join(' · ')}
                 </div>
               </div>
               <div className="flex items-center gap-2">
                 <div className={`px-2 py-0.5 rounded text-[10px] font-medium ${
-                  d.activo ? 'bg-[#E8F5E9] text-[#2E7D32]' : 'bg-[#F5F5F5] text-[#616161]'
+                  d.activo ? 'bg-[#2E7D32]/20 text-[#81C784] border-[#81C784]/30' : 'bg-white/5 text-[#90CAF9] border-white/10'
                 }`}>
                   {d.activo ? 'Activo' : 'Inactivo'}
                 </div>
@@ -149,7 +150,7 @@ export const DocenteDetailPage = () => {
   return (
     <div className="p-4">
       <header className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-bold text-[#212121]">{docente.nombreCompleto}</h2>
+        <h2 className="text-lg font-bold text-[#E0E0E0]">{docente.nombreCompleto}</h2>
         {canManage && (
           <Button onClick={() => navigate(`/dashboard/docentes/${id}/editar`)} variant="outline" className="h-10 text-sm px-4">
             Editar
@@ -160,11 +161,11 @@ export const DocenteDetailPage = () => {
       <Card className="mb-6">
         <div className="flex items-center justify-between">
           <div>
-            <div className="text-lg font-bold text-[#212121]">{docente.nombreCompleto}</div>
-            <div className="text-sm text-[#616161]">{docente.grado ?? ''} {docente.seccion ?? ''} {docente.turno ?? ''}</div>
+            <div className="text-lg font-bold text-[#E0E0E0]">{docente.nombreCompleto}</div>
+            <div className="text-sm text-[#90CAF9]">{docente.grado ?? ''} {docente.seccion ?? ''} {docente.turno ?? ''}</div>
           </div>
           <div className={`px-3 py-1 rounded text-[10px] font-medium ${
-            docente.activo ? 'bg-[#E8F5E9] text-[#2E7D32]' : 'bg-[#F5F5F5] text-[#616161]'
+            docente.activo ? 'bg-[#2E7D32]/20 text-[#81C784] border-[#81C784]/30' : 'bg-white/5 text-[#90CAF9] border-white/10'
           }`}>
             {docente.activo ? 'Activo' : 'Inactivo'}
           </div>
@@ -172,27 +173,27 @@ export const DocenteDetailPage = () => {
       </Card>
 
       <Card>
-        <div className="text-sm font-bold text-[#212121] mb-3">Información del docente</div>
+        <div className="text-sm font-bold text-[#E0E0E0] mb-3">Información del docente</div>
         <div className="space-y-2 text-sm">
-          <div className="flex justify-between border-b border-[#E0E0E0] pb-2">
-            <span className="text-[#616161]">Nombres</span>
-            <span className="text-[#212121]">{docente.nombres}</span>
+          <div className="flex justify-between border-b border-white/10 pb-2">
+            <span className="text-[#90CAF9]">Nombres</span>
+            <span className="text-[#E0E0E0]">{docente.nombres}</span>
           </div>
-          <div className="flex justify-between border-b border-[#E0E0E0] pb-2">
-            <span className="text-[#616161]">Apellidos</span>
-            <span className="text-[#212121]">{docente.apellidos}</span>
+          <div className="flex justify-between border-b border-white/10 pb-2">
+            <span className="text-[#90CAF9]">Apellidos</span>
+            <span className="text-[#E0E0E0]">{docente.apellidos}</span>
           </div>
-          <div className="flex justify-between border-b border-[#E0E0E0] pb-2">
-            <span className="text-[#616161]">Grado</span>
-            <span className="text-[#212121]">{docente.grado ?? '—'}</span>
+          <div className="flex justify-between border-b border-white/10 pb-2">
+            <span className="text-[#90CAF9]">Grado</span>
+            <span className="text-[#E0E0E0]">{docente.grado ?? '—'}</span>
           </div>
-          <div className="flex justify-between border-b border-[#E0E0E0] pb-2">
-            <span className="text-[#616161]">Sección</span>
-            <span className="text-[#212121]">{docente.seccion ?? '—'}</span>
+          <div className="flex justify-between border-b border-white/10 pb-2">
+            <span className="text-[#90CAF9]">Sección</span>
+            <span className="text-[#E0E0E0]">{docente.seccion ?? '—'}</span>
           </div>
-          <div className="flex justify-between border-b border-[#E0E0E0] pb-2">
-            <span className="text-[#616161]">Turno</span>
-            <span className="text-[#212121]">{docente.turno === 'mañana' ? 'Mañana' : docente.turno === 'tarde' ? 'Tarde' : '—'}</span>
+          <div className="flex justify-between border-b border-white/10 pb-2">
+            <span className="text-[#90CAF9]">Turno</span>
+            <span className="text-[#E0E0E0]">{docente.turno === 'mañana' ? 'Mañana' : docente.turno === 'tarde' ? 'Tarde' : '—'}</span>
           </div>
         </div>
       </Card>
@@ -264,33 +265,37 @@ export const DocenteFormPage = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-lg font-bold text-[#212121] mb-4">Registrar Docente</h2>
+      <h2 className="text-lg font-bold text-[#E0E0E0] mb-4">Registrar Docente</h2>
       <Card>
         <form onSubmit={handleSave} className="space-y-4">
           <Input
             label="Nombres"
             value={formData.nombres}
             onChange={(e) => setFormData({ ...formData, nombres: e.target.value })}
+            className="text-[#00F2FF]"
           />
           <Input
             label="Apellidos"
             value={formData.apellidos}
             onChange={(e) => setFormData({ ...formData, apellidos: e.target.value })}
+            className="text-[#00F2FF]"
           />
           <Input
             label="Grado"
             value={formData.grado}
             onChange={(e) => setFormData({ ...formData, grado: e.target.value })}
             placeholder="Ej: Primaria"
+            className="text-[#00F2FF]"
           />
           <Input
             label="Sección"
             value={formData.seccion}
             onChange={(e) => setFormData({ ...formData, seccion: e.target.value })}
             placeholder="Ej: A"
+            className="text-[#00F2FF]"
           />
           <div className="mb-2">
-            <label className="block text-xs font-medium text-[#616161] mb-1">Turno</label>
+            <label className="block text-xs font-medium text-[#90CAF9] mb-1">Turno</label>
             <div className="flex gap-2">
               {turnos.map((t) => (
                 <button
@@ -299,8 +304,8 @@ export const DocenteFormPage = () => {
                   onClick={() => setFormData({ ...formData, turno: t.value })}
                   className={`flex-1 px-4 py-2 rounded border text-sm transition-colors ${
                     formData.turno === t.value
-                      ? 'bg-[#1565C0] text-white border-[#1565C0]'
-                      : 'border-[#E0E0E0] text-[#616161] hover:bg-[#F5F5F5]'
+                      ? 'bg-[#1565C0]/20 border-[#1565C0] text-[#00F2FF]'
+                      : 'border-white/10 text-[#90CAF9] hover:bg-white/5'
                   }`}
                 >
                   {t.label}
@@ -313,12 +318,12 @@ export const DocenteFormPage = () => {
               type="checkbox"
               checked={formData.activo}
               onChange={(e) => setFormData({ ...formData, activo: e.target.checked })}
-              className="w-4 h-4 text-[#1565C0] rounded"
+              className="w-4 h-4 text-[#00F2FF] rounded"
             />
-            <label className="text-sm text-[#212121]">Docente activo</label>
+            <label className="text-sm text-[#E0E0E0]">Docente activo</label>
           </div>
           {error && (
-            <div className="rounded border border-[#C62828] bg-[#FFEBEE] p-3 text-[#B71C1C] text-sm">
+            <div className="rounded border border-[#FF5252]/50 bg-[#FF5252]/10 p-3 text-[#FFBABA] text-sm shadow-[0_0_15px_rgba(255,82,82,0.3)]">
               {error}
             </div>
           )}

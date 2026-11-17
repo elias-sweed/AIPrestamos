@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { COLORS } from '../../theme/colors'
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'success' | 'warning' | 'error' | 'outline' | 'ghost'
@@ -9,14 +8,14 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className = '', variant = 'primary', loading = false, fullWidth = false, disabled, children, ...props }, ref) => {
-    const base = 'inline-flex items-center justify-center gap-2 rounded button font-medium transition-all disabled:opacity-60 disabled:pointer-events-none'
+    const base = 'inline-flex items-center justify-center gap-2 rounded border font-medium transition-all disabled:opacity-60 disabled:pointer-events-none'
     const variants: Record<string, string> = {
-      primary: `bg-primary text-white ${COLORS.primaryDark ? '' : ''}`,
-      success: `bg-[#2E7D32] text-white`,
-      warning: `bg-[#E65100] text-white`,
-      error: `bg-[#C62828] text-white`,
-      outline: `border border-[#1565C0] text-[#1565C0] bg-white`,
-      ghost: `text-[#616161] bg-white`,
+      primary: `bg-gradient-to-r from-[#1565C0] to-[#00F2FF] text-white border border-transparent shadow-[0_0_30px_rgba(21,101,192,0.4)]`,
+      success: `bg-[#2E7D32] text-white border border-[#4CAF50]/30 shadow-[0_0_20px_rgba(46,125,50,0.4)]`,
+      warning: `bg-[#E65100] text-white border border-[#FF9800]/30 shadow-[0_0_20px_rgba(230,81,0,0.4)]`,
+      error: `bg-[#C62828] text-white border border-[#F44336]/30 shadow-[0_0_20px_rgba(198,40,40,0.4)]`,
+      outline: `border border-white/30 text-white bg-black/40`,
+      ghost: `text-[#90CAF9] bg-transparent hover:bg-white/10`,
     }
     return (
       <button
@@ -26,7 +25,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {loading ? (
-          <svg className="w-4 h-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <svg className="w-4 h-4 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
             <path
               className="opacity-75"

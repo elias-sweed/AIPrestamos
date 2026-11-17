@@ -57,7 +57,7 @@ export const LoansPage = () => {
   return (
     <div className="p-4">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-bold text-[#212121]">Préstamos</h2>
+        <h2 className="text-lg font-bold text-[#E0E0E0]">Préstamos</h2>
         <Button onClick={() => navigate('/dashboard/prestamos/nuevo')} variant="primary" className="h-10 text-sm px-4">
           + Nuevo
         </Button>
@@ -67,8 +67,8 @@ export const LoansPage = () => {
           <Card key={p.id} padding="md">
             <div className="flex items-center justify-between">
               <div>
-                <div className="font-semibold text-[#212121]">{p.docenteNombre}</div>
-                <div className="text-xs text-[#616161]">
+                <div className="font-semibold text-[#E0E0E0]">{p.docenteNombre}</div>
+                <div className="text-xs text-[#90CAF9]">
                   {p.cantidadEquipos} equipos · {p.encargadoNombre} · {new Date(p.fechaHoraInicio).toLocaleDateString('es-ES')}
                 </div>
               </div>
@@ -168,23 +168,23 @@ export const LoanCreatePage = () => {
   return (
     <div className="p-4">
       <header className="mb-4">
-        <h2 className="text-lg font-bold text-[#212121]">{titles[step]}</h2>
-        <button onClick={() => navigate('/dashboard/prestamos')} className="text-xs text-[#1565C0]">Cerrar</button>
+        <h2 className="text-lg font-bold text-[#E0E0E0]">{titles[step]}</h2>
+        <button onClick={() => navigate('/dashboard/prestamos')} className="text-xs text-[#00F2FF]">Cerrar</button>
       </header>
 
-      <div className="h-1 bg-[#E0E0E0] rounded-full mb-6 overflow-hidden">
+      <div className="h-1 bg-[#1a1a1a] rounded-full mb-6 overflow-hidden">
         <div
-          className="h-full bg-[#1565C0] transition-all"
+          className="h-full bg-gradient-to-r from-[#1565C0] to-[#00F2FF] transition-all"
           style={{ width: `${((step) / 2) * 100}%` }}
         ></div>
       </div>
 
       {step === 0 && (
         <div className="space-y-4">
-          <Input label="Buscar docente" value={searchDocente} onChange={(e) => setSearchDocente(e.target.value)} />
+          <Input label="Buscar docente" value={searchDocente} onChange={(e) => setSearchDocente(e.target.value)} className="text-[#00F2FF]" />
           <div className="flex-1 min-h-0 overflow-auto">
             {loadingDocentes ? <Loading /> : filteredDocentes.length === 0 ? (
-              <p className="text-[#616161] text-center py-4">No se encontraron docentes</p>
+              <p className="text-[#90CAF9] text-center py-4">No se encontraron docentes</p>
             ) : (
               <div className="space-y-1">
                 {filteredDocentes.map((d) => {
@@ -194,12 +194,12 @@ export const LoanCreatePage = () => {
                       key={d.id}
                       onClick={() => setSelectedDocente(d)}
                       className={`w-full flex items-center justify-between px-4 py-3 rounded border transition-colors ${
-                        sel ? 'bg-[#E3F2FD] border-[#1565C0] text-[#1565C0]' : 'border-[#E0E0E0] text-[#616161] hover:bg-[#F5F5F5]'
+                        sel ? 'bg-[#1565C0]/20 border-[#1565C0] text-[#00F2FF]' : 'border-white/10 text-[#90CAF9] hover:bg-white/5'
                       }`}
                     >
                       <div>
-                        <div className="font-medium text-[#212121]">{d.nombreCompleto}</div>
-                        {d.grado && <div className="text-xs text-[#616161]">{d.grado}</div>}
+                        <div className="font-medium text-[#E0E0E0]">{d.nombreCompleto}</div>
+                        {d.grado && <div className="text-xs text-[#90CAF9]">{d.grado}</div>}
                       </div>
                       {sel && '✔'}
                     </button>
@@ -216,10 +216,10 @@ export const LoanCreatePage = () => {
 
       {step === 1 && (
         <div className="space-y-4">
-          <Input label="Buscar equipo" value={searchEquipo} onChange={(e) => setSearchEquipo(e.target.value)} />
+          <Input label="Buscar equipo" value={searchEquipo} onChange={(e) => setSearchEquipo(e.target.value)} className="text-[#00F2FF]" />
           <div className="flex-1 min-h-0 overflow-auto">
             {loadingEquipos ? <Loading /> : filteredEquipos.length === 0 ? (
-              <p className="text-[#616161] text-center py-4">No hay equipos disponibles</p>
+              <p className="text-[#90CAF9] text-center py-4">No hay equipos disponibles</p>
             ) : (
               <div className="space-y-2">
                 {filteredEquipos.map((e) => {
@@ -237,11 +237,11 @@ export const LoanCreatePage = () => {
                               return next
                             })
                           }}
-                          className="w-4 h-4 text-[#1565C0] rounded"
+                          className="w-4 h-4 text-[#00F2FF] rounded"
                         />
                         <div>
-                          <div className="font-medium text-[#212121]">{e.nombre}</div>
-                          <div className="text-xs text-[#616161]">{e.codigoPatrimonial}</div>
+                          <div className="font-medium text-[#E0E0E0]">{e.nombre}</div>
+                          <div className="text-xs text-[#90CAF9]">{e.codigoPatrimonial}</div>
                         </div>
                       </div>
                     </label>
@@ -266,11 +266,11 @@ export const LoanCreatePage = () => {
 
       {step === 2 && (
         <div className="space-y-4">
-          <div className="p-4 rounded bg-[#E3F2FD] border border-[#1565C0]">
-            <div className="font-medium text-[#212121]">Docente: {selectedDocente?.nombreCompleto}</div>
-            <div className="text-sm text-[#1565C0]">{selectedEquipoIds.size} equipo(s) seleccionado(s)</div>
+          <div className="p-4 rounded bg-[#1565C0]/10 border border-[#1565C0]/30">
+            <div className="font-medium text-[#E0E0E0]">Docente: {selectedDocente?.nombreCompleto}</div>
+            <div className="text-sm text-[#00F2FF]">{selectedEquipoIds.size} equipo(s) seleccionado(s)</div>
           </div>
-          <div className="flex-1 border border-[#E0E0E0] rounded p-4">
+          <div className="flex-1 border border-white/10 rounded p-4">
             <SignaturePadCapture onCapture={(bytes) => {
               ;(window as any).__aipSignatureBytes = bytes
             }} />
@@ -335,7 +335,7 @@ const SignaturePadCapture = ({ onCapture }: { onCapture: (bytes: Uint8Array) => 
     const canvas = canvasRef.current!
     const ctx = canvas.getContext('2d')!
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-    ctx.strokeStyle = '#000'
+    ctx.strokeStyle = '#00F2FF'
     ctx.lineWidth = 3
     ctx.lineCap = 'round'
     ctx.lineJoin = 'round'
@@ -353,7 +353,7 @@ const SignaturePadCapture = ({ onCapture }: { onCapture: (bytes: Uint8Array) => 
         ref={canvasRef}
         width={300}
         height={150}
-        className="border border-[#E0E0E0] rounded bg-white touch-action-none"
+        className="border border-white/20 rounded bg-black/40 touch-action-none"
         onPointerDown={start}
         onPointerMove={move}
         onPointerUp={end}
@@ -389,7 +389,7 @@ export const LoanDetailPage = () => {
   return (
     <div className="p-4">
       <header className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-bold text-[#212121]">Préstamo</h2>
+        <h2 className="text-lg font-bold text-[#E0E0E0]">Préstamo</h2>
         {prestamo.estado === 'activo' && (
           <Button onClick={() => navigate(`/dashboard/prestamos/${id}/devolucion`)} variant="outline" className="h-10 text-sm px-4">
             Devolver
@@ -399,35 +399,35 @@ export const LoanDetailPage = () => {
 
       <Card className="mb-4">
         <div className="flex items-center justify-between mb-3">
-          <span className="font-semibold text-[#212121]">Información general</span>
+          <span className="font-semibold text-[#E0E0E0]">Información general</span>
           <Badge variant="primary" className="text-[10px]">{prestamo.estado}</Badge>
         </div>
         <div className="space-y-2 text-sm">
-          <div className="flex justify-between"><span className="text-[#616161]">Docente</span><span>{prestamo.docenteNombre}</span></div>
-          <div className="flex justify-between"><span className="text-[#616161]">Encargado</span><span>{prestamo.encargadoNombre}</span></div>
-          <div className="flex justify-between"><span className="text-[#616161]">Inicio</span><span>{new Date(prestamo.fechaHoraInicio).toLocaleString('es-ES')}</span></div>
-          <div className="flex justify-between"><span className="text-[#616161]">Equipos</span><span>{prestamo.equiposDevueltos}/{prestamo.cantidadEquipos} devueltos</span></div>
+          <div className="flex justify-between"><span className="text-[#90CAF9]">Docente</span><span className="text-[#E0E0E0]">{prestamo.docenteNombre}</span></div>
+          <div className="flex justify-between"><span className="text-[#90CAF9]">Encargado</span><span className="text-[#E0E0E0]">{prestamo.encargadoNombre}</span></div>
+          <div className="flex justify-between"><span className="text-[#90CAF9]">Inicio</span><span className="text-[#E0E0E0]">{new Date(prestamo.fechaHoraInicio).toLocaleString('es-ES')}</span></div>
+          <div className="flex justify-between"><span className="text-[#90CAF9]">Equipos</span><span className="text-[#E0E0E0]">{prestamo.equiposDevueltos}/{prestamo.cantidadEquipos} devueltos</span></div>
         </div>
       </Card>
 
       <Card>
         <div className="flex items-center justify-between mb-3">
-          <span className="font-semibold text-[#212121]">Equipos</span>
+          <span className="font-semibold text-[#E0E0E0]">Equipos</span>
           {prestamo.estado === 'activo' && (
             <Button onClick={() => {}} variant="outline" className="h-9 text-xs px-2">Añadir equipos</Button>
           )}
         </div>
         <div className="space-y-2">
           {prestamo.equipos.map((pe: any) => (
-            <div key={pe.id} className="flex items-center justify-between p-2 rounded border border-[#E0E0E0]">
+            <div key={pe.id} className="flex items-center justify-between p-2 rounded border border-white/10">
               <div>
-                <div className="font-medium text-[#212121]">{pe.equipoNombre}</div>
-                <div className="text-xs text-[#616161]">{pe.equipoCodigo} • {pe.equipoTipo}</div>
+                <div className="font-medium text-[#E0E0E0]">{pe.equipoNombre}</div>
+                <div className="text-xs text-[#90CAF9]">{pe.equipoCodigo} • {pe.equipoTipo}</div>
               </div>
               {pe.fechaDevolucionReal ? (
                 <Badge variant="success" className="text-[10px]">Devuelto</Badge>
               ) : (
-                <Button onClick={() => {}} variant="ghost" className="h-8 px-2 text-xs text-[#C62828]">Quitar</Button>
+                <Button onClick={() => {}} variant="ghost" className="h-8 px-2 text-xs text-[#FF5252]">Quitar</Button>
               )}
             </div>
           ))}
@@ -486,13 +486,13 @@ export const LoanReturnPage = () => {
   return (
     <div className="p-4">
       <header className="mb-4">
-        <h2 className="text-lg font-bold text-[#212121]">{step === 0 ? 'Seleccionar equipos' : 'Firma'}</h2>
-        <button onClick={() => navigate(`/dashboard/prestamos/${id}`)} className="text-xs text-[#1565C0]">Cerrar</button>
+        <h2 className="text-lg font-bold text-[#E0E0E0]">{step === 0 ? 'Seleccionar equipos' : 'Firma'}</h2>
+        <button onClick={() => navigate(`/dashboard/prestamos/${id}`)} className="text-xs text-[#00F2FF]">Cerrar</button>
       </header>
 
       {step === 0 && (
         <div className="space-y-4">
-          <div className="font-semibold text-[#212121]">Devolver: {prestamo.docenteNombre}</div>
+          <div className="font-semibold text-[#E0E0E0]">Devolver: {prestamo.docenteNombre}</div>
           <div className="flex-1 min-h-0 overflow-auto space-y-2">
             {pendientes.map((pe: any) => {
               const sel = selectedPeIds.has(pe.id)
@@ -509,18 +509,18 @@ export const LoanReturnPage = () => {
                           return next
                         })
                       }}
-                      className="w-4 h-4 text-[#1565C0] rounded"
+                      className="w-4 h-4 text-[#00F2FF] rounded"
                     />
                     <div>
-                      <div className="font-medium text-[#212121]">{pe.equipoNombre}</div>
-                      <div className="text-xs text-[#616161]">{pe.equipoCodigo}</div>
+                      <div className="font-medium text-[#E0E0E0]">{pe.equipoNombre}</div>
+                      <div className="text-xs text-[#90CAF9]">{pe.equipoCodigo}</div>
                     </div>
                   </div>
                 </label>
               )
             })}
           </div>
-          <Input label="Observaciones (opcional)" value={observaciones} onChange={(e) => setObservaciones(e.target.value)} />
+          <Input label="Observaciones (opcional)" value={observaciones} onChange={(e) => setObservaciones(e.target.value)} className="text-[#00F2FF]" />
           <div className="flex gap-2">
             <Button onClick={() => navigate(`/dashboard/prestamos/${id}`)} variant="outline" className="flex-1 h-10 text-sm">
               Cancelar
@@ -539,11 +539,11 @@ export const LoanReturnPage = () => {
 
       {step === 1 && (
         <div className="space-y-4">
-          <div className="p-4 rounded bg-[#E3F2FD] border border-[#1565C0]">
-            <div className="font-medium text-[#212121]">Recibe: {prestamo.encargadoNombre}</div>
-            <div className="text-sm text-[#1565C0]">Entrega: {prestamo.docenteNombre}</div>
+          <div className="p-4 rounded bg-[#1565C0]/10 border border-[#1565C0]/30">
+            <div className="font-medium text-[#E0E0E0]">Recibe: {prestamo.encargadoNombre}</div>
+            <div className="text-sm text-[#00F2FF]">Entrega: {prestamo.docenteNombre}</div>
           </div>
-          <div className="flex-1 border border-[#E0E0E0] rounded p-4">
+          <div className="flex-1 border border-white/10 rounded p-4">
             <SignaturePadCapture onCapture={() => {}} />
           </div>
           <div className="flex gap-2">

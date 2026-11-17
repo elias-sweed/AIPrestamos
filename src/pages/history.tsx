@@ -34,7 +34,7 @@ export const HistoryPage = () => {
   if (prestamos.length === 0) {
     return (
       <div className="p-4">
-        <h2 className="text-lg font-bold text-[#212121] mb-4">Historial</h2>
+        <h2 className="text-lg font-bold text-[#E0E0E0] mb-4">Historial</h2>
         <EmptyView icon="🕒" title="Sin historial de préstamos" />
       </div>
     )
@@ -42,11 +42,11 @@ export const HistoryPage = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-lg font-bold text-[#212121] mb-4">Historial de Préstamos</h2>
+      <h2 className="text-lg font-bold text-[#E0E0E0] mb-4">Historial de Préstamos</h2>
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="border-b border-[#E0E0E0] text-xs text-[#616161]">
+            <tr className="border-b border-white/10 text-xs text-[#90CAF9]">
               <th className="pb-3 font-medium">Docente</th>
               <th className="pb-3 font-medium">Fecha</th>
               <th className="pb-3 font-medium">Estado</th>
@@ -55,11 +55,11 @@ export const HistoryPage = () => {
           </thead>
           <tbody>
             {prestamos.map((p) => (
-              <tr key={p.id} className="border-b border-[#E0E0E0] hover:bg-[#F5F5F5]">
-                <td className="py-3 text-sm font-medium text-[#212121]">{p.docenteNombre}</td>
-                <td className="py-3 text-sm text-[#616161]">{new Date(p.fechaHoraInicio).toLocaleDateString('es-ES')}</td>
+              <tr key={p.id} className="border-b border-white/10 hover:bg-white/5">
+                <td className="py-3 text-sm font-medium text-[#E0E0E0]">{p.docenteNombre}</td>
+                <td className="py-3 text-sm text-[#90CAF9]">{new Date(p.fechaHoraInicio).toLocaleDateString('es-ES')}</td>
                 <td className="py-3 text-sm">{p.estado}</td>
-                <td className="py-3 text-sm text-[#616161]">{p.cantidadEquipos}</td>
+                <td className="py-3 text-sm text-[#90CAF9]">{p.cantidadEquipos}</td>
               </tr>
             ))}
           </tbody>

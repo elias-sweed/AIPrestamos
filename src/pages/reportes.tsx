@@ -40,11 +40,11 @@ export const ReportesPage = () => {
   if (!reporte) return <EmptyView icon="📊" title="Sin reportes" />
 
   const metric = (label: string, value: number, color: string, emoji: string) => (
-    <div key={label} className="rounded border border-[#E0E0E0] bg-white p-3">
+    <div key={label} className="rounded border border-white/10 bg-black/40 p-3">
       <div className="flex items-center justify-between">
         <div>
-          <div className="text-xs font-medium text-[#616161]">{label}</div>
-          <div className="text-xl font-bold text-[#212121]">{value}</div>
+          <div className="text-xs font-medium text-[#90CAF9]">{label}</div>
+          <div className="text-xl font-bold text-[#E0E0E0]">{value}</div>
         </div>
         <div className="w-8 h-8 rounded flex items-center justify-center" style={{ backgroundColor: color + '20', color }}>
           {emoji}
@@ -114,7 +114,7 @@ export const ReportesPage = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-lg font-bold text-[#212121] mb-4">Reportes</h2>
+      <h2 className="text-lg font-bold text-[#E0E0E0] mb-4">Reportes</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
         {metric('Préstamos', reporte.totalPrestamos ?? 0, '#1565C0', '📋')}
@@ -127,7 +127,7 @@ export const ReportesPage = () => {
 
       <div className="space-y-4">
         <div className="flex items-center justify-between mb-2">
-          <h3 className="text-sm font-bold text-[#212121]">Exportar reporte</h3>
+          <h3 className="text-sm font-bold text-[#E0E0E0]">Exportar reporte</h3>
           <div className="flex gap-2">
             <Button onClick={exportarPDF} variant="outline" className="h-10 text-sm px-4">
               📄 Descargar PDF
@@ -139,12 +139,12 @@ export const ReportesPage = () => {
         </div>
 
         <Card>
-          <div className="text-sm text-[#616161]">
+          <div className="text-sm text-[#90CAF9]">
             <p>Resumen general de préstamos y equipos.</p>
             <p className="mt-2">
-              Total préstamos: <span className="font-semibold text-[#212121]">{reporte.totalPrestamos}</span> ·
-              Activos: <span className="font-semibold text-[#212121]">{reporte.prestamosActivos}</span> ·
-              Devueltos: <span className="font-semibold text-[#212121]">{reporte.prestamosDevueltos}</span>
+              Total préstamos: <span className="font-semibold text-[#E0E0E0]">{reporte.totalPrestamos}</span> ·
+              Activos: <span className="font-semibold text-[#E0E0E0]">{reporte.prestamosActivos}</span> ·
+              Devueltos: <span className="font-semibold text-[#E0E0E0]">{reporte.prestamosDevueltos}</span>
             </p>
           </div>
         </Card>

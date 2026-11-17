@@ -47,15 +47,15 @@ export const DashboardPage = () => {
   }
 
   return (
-    <div className="flex flex-col h-screen bg-[#F5F5F5] overflow-hidden">
-      <header className="h-14 bg-[#FFFFFF] border-b border-[#E0E0E0] flex items-center justify-between px-4 shrink-0 z-20">
+    <div className="flex flex-col h-screen bg-[#050505] overflow-hidden">
+      <header className="h-14 neon-header flex items-center justify-between px-4 shrink-0 z-20">
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded bg-[#1565C0] flex items-center justify-center text-white text-xs">A</div>
-          <span className="font-semibold text-[#212121] text-sm">Dashboard</span>
+          <div className="w-6 h-6 rounded bg-gradient-to-r from-[#1565C0] to-[#00F2FF] flex items-center justify-center text-white text-xs shadow-[0_0_15px_rgba(0,242,255,0.4)]">A</div>
+          <span className="font-semibold text-[#E0E0E0] text-sm">Dashboard</span>
         </div>
         <div className="flex items-center gap-3">
-          <span className="text-xs text-[#616161] hidden sm:block">{new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
-          <div className="w-8 h-8 rounded-full bg-[#1565C0] flex items-center justify-center text-white text-xs font-bold">
+          <span className="text-xs text-[#90CAF9] hidden sm:block">{new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+          <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#1565C0] to-[#00F2FF] flex items-center justify-center text-white text-xs font-bold shadow-[0_0_15px_rgba(0,242,255,0.4)]">
             {authStore.value.user?.email?.split('@')[0][0].toUpperCase() ?? '?'}
           </div>
         </div>
@@ -68,10 +68,10 @@ export const DashboardPage = () => {
             <Card key={m.label} padding="sm">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-xs font-medium text-[#616161]">{m.label}</div>
-                  <div className="text-2xl font-bold text-[#212121]">{m.count}</div>
+                  <div className="text-xs font-medium text-[#90CAF9]">{m.label}</div>
+                  <div className="text-2xl font-bold text-[#E0E0E0]">{m.count}</div>
                 </div>
-                <div className={`w-8 h-8 rounded bg-[${m.color}]20 flex items-center justify-center text-[${m.color}]`}>
+                <div className={`w-8 h-8 rounded bg-[${m.color}]/20 flex items-center justify-center text-[${m.color}]`}>
                   {m.icon}
                 </div>
               </div>
@@ -81,24 +81,24 @@ export const DashboardPage = () => {
 
         {/* Préstamos activos hoy */}
         <div className="mb-4">
-          <h3 className="text-sm font-bold text-[#212121] mb-2">Préstamos activos hoy</h3>
-          <div className="bg-[#FFFFFF] rounded border border-[#E0E0E0] p-3">
-            <p className="text-[#616161] text-sm">Cargando préstamos activos...</p>
+          <h3 className="text-sm font-bold text-[#E0E0E0] mb-2">Préstamos activos hoy</h3>
+          <div className="neon-card p-3">
+            <p className="text-[#90CAF9] text-sm">Cargando préstamos activos...</p>
           </div>
         </div>
 
         {canViewFull && (
           <div className="mb-4">
-            <h3 className="text-sm font-bold text-[#212121] mb-2">Actividad reciente</h3>
-            <div className="bg-[#FFFFFF] rounded border border-[#E0E0E0] p-3">
-              <p className="text-[#616161] text-sm">Sin actividad reciente.</p>
+            <h3 className="text-sm font-bold text-[#E0E0E0] mb-2">Actividad reciente</h3>
+            <div className="neon-card p-3">
+              <p className="text-[#90CAF9] text-sm">Sin actividad reciente.</p>
             </div>
           </div>
         )}
 
         {/* Acción rápida */}
         <div className="mb-8">
-          <h3 className="text-sm font-bold text-[#212121] mb-2">Acción rápida</h3>
+          <h3 className="text-sm font-bold text-[#E0E0E0] mb-2">Acción rápida</h3>
           <div className="space-y-2">
             <Button
               onClick={() => navigate('/dashboard/prestamos/nuevo')}
@@ -120,17 +120,17 @@ export const DashboardPage = () => {
         </div>
 
         {/* Estado de sincronización */}
-        <div className="bg-[#FFFFFF] rounded border border-[#E0E0E0] p-3 flex items-center justify-between">
+        <div className="neon-card p-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div
-              className={`w-2 h-2 rounded-full ${syncStore.value.connected ? 'bg-[#2E7D32]' : 'bg-[#C62828]'}`}
+              className={`w-2 h-2 rounded-full ${syncStore.value.connected ? 'bg-[#2E7D32]' : 'bg-[#FF5252]'}`}
             ></div>
-            <span className="text-xs text-[#616161]">
+            <span className="text-xs text-[#90CAF9]">
               {syncStore.value.connected ? 'Conectado' : 'Sin conexión'}
             </span>
           </div>
           {syncStore.value.pending > 0 && (
-            <span className="text-xs text-[#E65100] font-medium">{syncStore.value.pending} pendiente(s) de sincronizar</span>
+            <span className="text-xs text-[#FFB74D] font-medium">{syncStore.value.pending} pendiente(s) de sincronizar</span>
           )}
         </div>
       </div>
