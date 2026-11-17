@@ -1,0 +1,6 @@
+export { equipoRepositoryImpl } from './equipoRepositoryImpl'
+export { docenteRepositoryImpl } from './docenteRepositoryImpl'
+export { prestamoRepositoryImpl } from './prestamoRepositoryImpl'
+export { devolucionRepositoryImpl } from './devolucionRepositoryImpl'
+export { dashboardRepositoryImpl } from './dashboardRepositoryImpl'
+export { reportesRepositoryImpl } from './reportesRepositoryImpl'

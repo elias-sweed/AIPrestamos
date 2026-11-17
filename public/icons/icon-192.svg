@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192">
+  <rect width="192" height="192" rx="44" fill="#1565C0"/>
+  <path d="M96 52c-11 0-20 7-23 18l-15 7v22h38v-22l-15-7c-3-11-12-18-23-18z" fill="#FFFFFF"/>
+  <rect x="80" y="96" width="32" height="16" rx="3" fill="#FFFFFF"/>
+  <text x="96" y="160" font-family="sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF" text-anchor="middle">AIP</text>
+</svg>

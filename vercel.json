@@ -1,0 +1,21 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "builds": [
+    { "src": "vite.config.ts", "use": "@vercel/static-build", "config": { "outDir": "dist" } }
+  ],
+  "routes": [
+    { "src": "/(.*\\.(js|css|ico|png|svg|woff2))", "headers": { "cache-control": "public, max-age=31536000, immutable" }, "continue": true },
+    { "handle": "filesystem" },
+    { "src": "/.*", "dest": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/sw.js",
+      "headers": [
+        { "key": "Service-Worker-Allowed", "value": "/" },
+        { "key": "Cache-Control", "value": "no-cache" }
+      ]
+    }
+  ]
+}
